@@ -318,7 +318,7 @@ message ParamSpec {
 // NOTE
 // Update the next available ID when you add a new LayerParameter field.
 //
-// LayerParameter next available layer-specific ID: 148 (last added: gram_param)
+// LayerParameter next available layer-specific ID: 149 (last added: tv_loss_param)
 message LayerParameter {
   optional string name = 1; // the layer name
   optional string type = 2; // the layer type
@@ -415,6 +415,7 @@ message LayerParameter {
   optional TanHParameter tanh_param = 127;
   optional ThresholdParameter threshold_param = 128;
   optional TileParameter tile_param = 138;
+  optional TVLossParameter tv_loss_param = 148;
   optional WindowDataParameter window_data_param = 129;
 }
 
@@ -761,6 +762,10 @@ message GramParameter {
     // For example, if axis == 2 and the input is (N x C x H x W), the output
     // will be (N x C x C)
     optional int32 axis = 1 [default = 2];
+}
+
+message TVLossParameter {
+    optional float beta = 1 [default = 2];
 }
 
 // Message that stores parameters used by HDF5DataLayer
